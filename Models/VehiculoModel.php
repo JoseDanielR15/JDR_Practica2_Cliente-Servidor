@@ -1,14 +1,21 @@
 <?php
-include_once $_SERVER["DOCUMENT_ROOT"] . "/JDR_Practica2_Cliente-Servidor/Models/UtilitarioModel.php";
 
-function RegistrarVehiculoModel($marca,$modelo,$color,$precio,$cedula)
+include_once("UtilitarioModel.php");
+
+function RegistrarVehiculoModel($marca, $modelo, $color, $precio, $cedula)
 {
     $context = OpenDatabase();
 
     $sp = "CALL sp_RegistrarVehiculo('$marca','$modelo','$color','$precio','$cedula')";
     $result = $context->query($sp);
 
+    // Limpieza obligatoria después de SP
+    if($result){
+        while($context->more_results() && $context->next_result()){}
+    }
+
     CloseDatabase($context);
+
     return $result;
 }
 
@@ -19,6 +26,9 @@ function ConsultarVehiculosModel()
     $sp = "CALL sp_ConsultarVehiculos()";
     $result = $context->query($sp);
 
-    CloseDatabase($context);
+    // NO cerramos la conexión aquí todavía
+    // porque la vista necesita recorrer el resultado
+
     return $result;
 }
+?>

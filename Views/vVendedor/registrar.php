@@ -1,6 +1,6 @@
 <?php 
 
-include_once $_SERVER["DOCUMENT_ROOT"] . "/JDR_Practica2_Cliente-Servidor/Views/layout.php"; 
+include_once("../layout.php");
 
 ?>
 
