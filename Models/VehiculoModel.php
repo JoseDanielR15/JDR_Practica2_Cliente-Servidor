@@ -1,34 +1,26 @@
 <?php
-
 include_once("UtilitarioModel.php");
 
-function RegistrarVehiculoModel($marca, $modelo, $color, $precio, $cedula)
+function RegistrarVehiculoModel($Marca, $Modelo, $Color, $Precio, $IdVendedor)
 {
     $context = OpenDatabase();
 
-    $sp = "CALL sp_RegistrarVehiculo('$marca','$modelo','$color','$precio','$cedula')";
-    $result = $context->query($sp);
-
-    // Limpieza obligatoria después de SP
-    if($result){
-        while($context->more_results() && $context->next_result()){}
-    }
+    $sentencia = "CALL sp_RegistrarVehiculo('$Marca','$Modelo','$Color','$Precio','$IdVendedor')";
+    $resultado = $context->query($sentencia);
 
     CloseDatabase($context);
 
-    return $result;
+    return $resultado;
 }
 
 function ConsultarVehiculosModel()
 {
     $context = OpenDatabase();
 
-    $sp = "CALL sp_ConsultarVehiculos()";
-    $result = $context->query($sp);
+    $sentencia = "CALL sp_ConsultarVehiculos()";
+    $resultado = $context->query($sentencia);
 
-    // NO cerramos la conexión aquí todavía
-    // porque la vista necesita recorrer el resultado
+    CloseDatabase($context);
 
-    return $result;
+    return $resultado;
 }
-?>

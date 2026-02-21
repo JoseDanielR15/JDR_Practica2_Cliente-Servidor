@@ -26,15 +26,15 @@ DROP TABLE IF EXISTS `vehiculos`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `vehiculos` (
   `IdVehiculo` int(11) NOT NULL AUTO_INCREMENT,
-  `Marca` varchar(100) NOT NULL,
-  `Modelo` varchar(100) NOT NULL,
-  `Color` varchar(100) NOT NULL,
-  `Precio` decimal(18,2) NOT NULL,
+  `Marca` varchar(50) NOT NULL,
+  `Modelo` varchar(50) NOT NULL,
+  `Color` varchar(50) NOT NULL,
+  `Precio` decimal(10,2) NOT NULL,
   `IdVendedor` int(11) NOT NULL,
   PRIMARY KEY (`IdVehiculo`),
-  KEY `FK_Vehiculos_Vendedores` (`IdVendedor`),
-  CONSTRAINT `FK_Vehiculos_Vendedores` FOREIGN KEY (`IdVendedor`) REFERENCES `vendedores` (`IdVendedor`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  KEY `fk_vendedor` (`IdVendedor`),
+  CONSTRAINT `fk_vendedor` FOREIGN KEY (`IdVendedor`) REFERENCES `vendedores` (`IdVendedor`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,6 +43,7 @@ CREATE TABLE `vehiculos` (
 
 LOCK TABLES `vehiculos` WRITE;
 /*!40000 ALTER TABLE `vehiculos` DISABLE KEYS */;
+INSERT INTO `vehiculos` VALUES (3,'Porsche','911','Gris',15000.00,2);
 /*!40000 ALTER TABLE `vehiculos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -60,7 +61,7 @@ CREATE TABLE `vendedores` (
   `Correo` varchar(100) NOT NULL,
   `Estado` bit(1) NOT NULL,
   PRIMARY KEY (`IdVendedor`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,12 +70,105 @@ CREATE TABLE `vendedores` (
 
 LOCK TABLES `vendedores` WRITE;
 /*!40000 ALTER TABLE `vendedores` DISABLE KEYS */;
+INSERT INTO `vendedores` VALUES (1,'999','Prueba','correo@test.com',_binary '\0'),(2,'12345678','Jose Daniel Ramirez','josramirez2215@gmail.com',_binary '\0'),(3,'1098765','Flor Mayela Bolaños','flowerleibo@gmail.com',_binary '\0');
 /*!40000 ALTER TABLE `vendedores` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
 -- Dumping routines for database 'practica2'
 --
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ConsultarVehiculos` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ConsultarVehiculos`()
+BEGIN
+    SELECT 
+        v.IdVendedor,
+        v.Cedula,
+        v.Nombre,
+        ve.IdVehiculo,
+        ve.Marca,
+        ve.Modelo,
+        ve.Color,
+        ve.Precio
+    FROM Vehiculos ve
+    INNER JOIN Vendedores v
+        ON ve.IdVendedor = v.IdVendedor;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_RegistrarVehiculo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_RegistrarVehiculo`(
+    IN pMarca VARCHAR(50),
+    IN pModelo VARCHAR(50),
+    IN pColor VARCHAR(50),
+    IN pPrecio DECIMAL(10,2),
+    IN pIdVendedor INT
+)
+BEGIN
+    INSERT INTO Vehiculos(
+        Marca,
+        Modelo,
+        Color,
+        Precio,
+        IdVendedor
+    )
+    VALUES(
+        pMarca,
+        pModelo,
+        pColor,
+        pPrecio,
+        pIdVendedor
+    );
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_RegistrarVendedor` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_RegistrarVendedor`(
+    IN pCedula VARCHAR(20),
+    IN pNombre VARCHAR(100),
+    IN pCorreo VARCHAR(100)
+)
+BEGIN
+    INSERT INTO Vendedores(Cedula, Nombre, Correo)
+    VALUES(pCedula, pNombre, pCorreo);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -85,4 +179,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-02-20 22:57:03
+-- Dump completed on 2026-02-20 23:59:55

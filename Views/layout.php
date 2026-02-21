@@ -82,7 +82,7 @@ function MostrarNav()
 {
 ?>
     <aside class="sidebar-nav-wrapper">
-        <h4 class="text-center mb-4">Tienda de Vehículos</h4>
+        <h4 class="text-center mb-4">Tienda de Vehículos El Chinito</h4>
 
         <nav class="sidebar-nav">
 
@@ -110,7 +110,7 @@ function MostrarHeader()
 ?>
     <header class="header p-3">
         <div class="container-fluid">
-            <h5 class="mb-0">Sistema Administrativo - Tienda de Vehículos</h5>
+            <h5 class="mb-0">Sistema Administrativo - Tienda de Vehículos El Chinito</h5>
         </div>
     </header>
 <?php

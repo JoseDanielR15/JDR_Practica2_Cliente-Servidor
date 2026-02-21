@@ -1,13 +1,15 @@
 <?php
-include_once $_SERVER["DOCUMENT_ROOT"] . "/JDR_Practica2_Cliente-Servidor/Models/UtilitarioModel.php";
+include_once("../Models/UtilitarioModel.php");
 
-function RegistrarVendedorModel($cedula,$nombre,$correo)
+function RegistrarVendedorModel($Cedula, $Nombre, $Correo)
 {
     $context = OpenDatabase();
 
-    $sp = "CALL sp_RegistrarVendedor('$cedula','$nombre','$correo')";
-    $result = $context->query($sp);
+    $sentencia = "CALL sp_RegistrarVendedor('$Cedula','$Nombre','$Correo')";
+    $resultado = $context->query($sentencia);
 
     CloseDatabase($context);
-    return $result;
+
+    return $resultado;
 }
+?>

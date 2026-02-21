@@ -1,17 +1,16 @@
 <?php
 include_once("../Models/VehiculoModel.php");
 
-if(isset($_POST["btnRegistrar"]))
-{
-    $marca = $_POST["Marca"];
-    $modelo = $_POST["Modelo"];
-    $color = $_POST["Color"];
-    $precio = $_POST["Precio"];
-    $cedula = $_POST["Cedula"];
+if (isset($_POST["btnRegistrarVehiculo"])) {
+    
+    $Marca = $_POST["Marca"];
+    $Modelo = $_POST["Modelo"];
+    $Color = $_POST["Color"];
+    $Precio = $_POST["Precio"];
+    $IdVendedor = $_POST["IdVendedor"];
 
-    RegistrarVehiculoModel($marca,$modelo,$color,$precio,$cedula);
+    RegistrarVehiculoModel($Marca, $Modelo, $Color, $Precio, $IdVendedor);
 
-    header("Location: ../Views/vVehiculo/registrar.php");
-    exit;
+    header("Location: ../Views/vVehiculo/consultar.php");
+    exit();
 }
-?>

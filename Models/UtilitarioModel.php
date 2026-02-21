@@ -3,17 +3,10 @@
 function OpenDatabase()
 {
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-
-    return mysqli_connect(
-        "localhost",   // servidor
-        "root",        // usuario
-        "",            // contraseña (en XAMPP normalmente es vacía)
-        "practica2"    // nombre EXACTO de tu base
-    );
+    return mysqli_connect("127.0.0.1:3307","root","","practica2");
 }
 
 function CloseDatabase($context)
 {
     mysqli_close($context);
 }
-?>
