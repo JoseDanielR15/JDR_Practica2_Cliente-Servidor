@@ -1,5 +1,5 @@
 <?php
-include_once $_SERVER["DOCUMENT_ROOT"] . "/JDR_Practica2_Cliente-Servidor/Models/VendedorModel.php";
+include_once("../Models/VendedorModel.php");
 
 if(isset($_POST["btnRegistrar"]))
 {
@@ -9,5 +9,7 @@ if(isset($_POST["btnRegistrar"]))
 
     RegistrarVendedorModel($cedula,$nombre,$correo);
 
-    header("Location: ../../Views/vVendedor/registrar.php");
+    header("Location: ../Views/vVendedor/registrar.php");
+    exit;
 }
+?>

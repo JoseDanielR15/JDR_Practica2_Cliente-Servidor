@@ -3,17 +3,70 @@
 function MostrarCSS()
 {
 ?>
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tienda de Vehículos</title>
 
-        <title>Práctica 2</title>
-
-        <!-- Bootstrap -->
         <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Main CSS -->
-        <link href="../assets/css/main.css" rel="stylesheet">
+        <style>
+            body {
+                background-color: #f4f8fc;
+            }
+
+            .sidebar-nav-wrapper {
+                background-color: #0d3b66;
+                min-height: 25vh;
+                padding: 15px;
+                color: white;
+                padding: 20px;
+            }
+
+            .sidebar-nav-wrapper h4 {
+                color: white;
+                font-weight: bold;
+            }
+
+            .sidebar-nav a {
+                color: white;
+                text-decoration: none;
+                display: block;
+                padding: 10px;
+                border-radius: 6px;
+                margin-bottom: 10px;
+                transition: 0.3s;
+            }
+
+            .sidebar-nav a:hover {
+                background-color: #145da0;
+            }
+
+            .header {
+                background-color: #1b4965;
+                color: white;
+            }
+
+            .footer {
+                background-color: #e9f2fb;
+            }
+
+            .main-wrapper {
+                padding: 30px;
+            }
+
+            .gallery-card {
+                border-radius: 15px;
+                overflow: hidden;
+                transition: all 0.3s ease;
+            }
+
+            .gallery-card:hover {
+                transform: scale(1.05);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            }
+        </style>
     </head>
 <?php
 }
@@ -21,7 +74,6 @@ function MostrarCSS()
 function MostrarJS()
 {
 ?>
-    <!-- Bootstrap JS -->
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
 <?php
 }
@@ -29,40 +81,25 @@ function MostrarJS()
 function MostrarNav()
 {
 ?>
-    <!-- Sidebar -->
     <aside class="sidebar-nav-wrapper">
-        <div class="navbar-logo text-center py-4">
-            <h4>Práctica 2</h4>
-        </div>
+        <h4 class="text-center mb-4">Tienda de Vehículos</h4>
 
         <nav class="sidebar-nav">
-            <ul class="list-unstyled px-3">
 
-                <li class="mb-3">
-                    <a href="../vHome/inicio.php" class="btn btn-light w-100">
-                        Inicio
-                    </a>
-                </li>
+            <a href="../vHome/inicio.php">🏠 Inicio</a>
 
-                <li class="mb-3">
-                    <a href="../vVendedor/registrar.php" class="btn btn-primary w-100">
-                        Registro de Vendedores
-                    </a>
-                </li>
+            <a href="../vVendedor/registrar.php">
+                🔵 Registro de Vendedores
+            </a>
 
-                <li class="mb-3">
-                    <a href="../vVehiculo/registrar.php" class="btn btn-success w-100">
-                        Registro de Vehículos
-                    </a>
-                </li>
+            <a href="../vVehiculo/registrar.php">
+                🟢 Registro de Vehículos
+            </a>
 
-                <li class="mb-3">
-                    <a href="../vVehiculo/consultar.php" class="btn btn-warning w-100">
-                        Consulta de Vehículos
-                    </a>
-                </li>
+            <a href="../vVehiculo/consultar.php">
+                🟡 Consulta de Vehículos
+            </a>
 
-            </ul>
         </nav>
     </aside>
 <?php
@@ -71,9 +108,9 @@ function MostrarNav()
 function MostrarHeader()
 {
 ?>
-    <header class="header bg-dark text-white p-3">
+    <header class="header p-3">
         <div class="container-fluid">
-            <h5 class="mb-0">Sistema de Gestión de Vehículos</h5>
+            <h5 class="mb-0">Sistema Administrativo - Tienda de Vehículos</h5>
         </div>
     </header>
 <?php
@@ -82,10 +119,8 @@ function MostrarHeader()
 function MostrarFooter()
 {
 ?>
-    <footer class="footer bg-light text-center py-3 mt-4">
-        <div class="container">
-            <small>© <?php echo date("Y"); ?> - Práctica 2</small>
-        </div>
+    <footer class="footer text-center py-3 mt-4">
+        <small>© <?php echo date("Y"); ?> - Tienda de Vehículos El Chinito</small>
     </footer>
 <?php
 }

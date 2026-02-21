@@ -1,5 +1,5 @@
 <?php
-include_once $_SERVER["DOCUMENT_ROOT"] . "/JDR_Practica2_Cliente-Servidor/Models/VehiculoModel.php";
+include_once("../Models/VehiculoModel.php");
 
 if(isset($_POST["btnRegistrar"]))
 {
@@ -11,5 +11,7 @@ if(isset($_POST["btnRegistrar"]))
 
     RegistrarVehiculoModel($marca,$modelo,$color,$precio,$cedula);
 
-    header("Location: ../../Views/vVehiculo/registrar.php");
+    header("Location: ../Views/vVehiculo/registrar.php");
+    exit;
 }
+?>

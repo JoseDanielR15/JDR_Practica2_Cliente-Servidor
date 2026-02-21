@@ -3,37 +3,27 @@
 function MostrarCSS()
 {
 ?>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tienda de Vehículos</title>
 
-        <title>Práctica 2</title>
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Bootstrap -->
-        <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-
-        <!-- Main CSS -->
-        <link href="../assets/css/main.css" rel="stylesheet">
-    </head>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0d3b66, #1b4965);
+            color: white;
+        }
+    </style>
+</head>
 <?php
 }
 
 function MostrarJS()
 {
 ?>
-    <!-- Bootstrap JS -->
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
-<?php
-}
-
-function MostrarFooter()
-{
-?>
-    <footer class="footer bg-light text-center py-3 mt-4">
-        <div class="container">
-            <small>© <?php echo date("Y"); ?> - Práctica 2</small>
-        </div>
-    </footer>
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
 <?php
 }
 ?>
