@@ -34,7 +34,7 @@ CREATE TABLE `vehiculos` (
   PRIMARY KEY (`IdVehiculo`),
   KEY `fk_vendedor` (`IdVendedor`),
   CONSTRAINT `fk_vendedor` FOREIGN KEY (`IdVendedor`) REFERENCES `vendedores` (`IdVendedor`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `vehiculos` (
 
 LOCK TABLES `vehiculos` WRITE;
 /*!40000 ALTER TABLE `vehiculos` DISABLE KEYS */;
-INSERT INTO `vehiculos` VALUES (3,'Porsche','911','Gris',15000.00,2);
+INSERT INTO `vehiculos` VALUES (3,'Porsche','911','Gris',15000.00,2),(4,'Suzuki',' Vitara, S-Cross','Azul',34000.00,1),(5,'lamborghini','Huracan','Verde',103000.00,4),(6,'Mustang','Ford','Negro',55000.00,3);
 /*!40000 ALTER TABLE `vehiculos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -61,7 +61,7 @@ CREATE TABLE `vendedores` (
   `Correo` varchar(100) NOT NULL,
   `Estado` bit(1) NOT NULL,
   PRIMARY KEY (`IdVendedor`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +70,7 @@ CREATE TABLE `vendedores` (
 
 LOCK TABLES `vendedores` WRITE;
 /*!40000 ALTER TABLE `vendedores` DISABLE KEYS */;
-INSERT INTO `vendedores` VALUES (1,'999','Prueba','correo@test.com',_binary '\0'),(2,'12345678','Jose Daniel Ramirez','josramirez2215@gmail.com',_binary '\0'),(3,'1098765','Flor Mayela Bolaños','flowerleibo@gmail.com',_binary '\0');
+INSERT INTO `vendedores` VALUES (1,'999','Prueba','correo@test.com',_binary '\0'),(2,'12345678','Jose Daniel Ramirez','josramirez2215@gmail.com',_binary '\0'),(3,'1098765','Flor Mayela Bolaños','flowerleibo@gmail.com',_binary '\0'),(4,'11931828','Antonio Martinez Ocasio','antonio1234@gmail.com',_binary '\0');
 /*!40000 ALTER TABLE `vendedores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -179,4 +179,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-02-20 23:59:55
+-- Dump completed on 2026-02-21  0:19:18
